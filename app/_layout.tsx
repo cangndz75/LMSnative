@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { View } from "react-native";
 import "react-native-reanimated";
 import Onboarding from "./(routes)/onboarding";
+import { Stack } from "expo-router";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -40,5 +41,16 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
-  return <>{isLoggedIn ? <View></View> : <Onboarding />}</>;
+  return (
+    <>
+      {isLoggedIn ? (
+        <View></View>
+      ) : (
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="(routes)/welcome-intro/index" />
+        </Stack>
+      )}
+    </>
+  );
 }
