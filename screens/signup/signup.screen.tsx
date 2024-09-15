@@ -82,7 +82,7 @@ export default function SignUpScreen() {
           Let's Get Started
         </Text>
         <Text style={styles.learningText}>
-          Create an account to get all features.
+          Create an account to get all features
         </Text>
         <View style={styles.inputContainer}>
           <View>
