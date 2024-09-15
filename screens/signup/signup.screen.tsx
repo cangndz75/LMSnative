@@ -24,6 +24,7 @@ export default function SignUpScreen() {
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
   const [buttonSniper, setButtonSniper] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -84,21 +85,40 @@ export default function SignUpScreen() {
           Create an account to get all features.
         </Text>
         <View style={styles.inputContainer}>
-          <TextInput
-            style={[styles.input, { paddingLeft: 35 }]}
-            keyboardType="email-address"
-            value={userInfo.email}
-            placeholder="can@gmail.com"
-            onChangeText={(value) => {
-              setUserInfo({ ...userInfo, email: value });
-            }}
-          />
-          <Fontisto
-            style={{ position: "absolute", left: 26, top: 16.8 }}
-            name="email"
-            size={20}
-            color={"#A1A1A1"}
-          />
+          <View>
+            <TextInput
+              style={[styles.input, { paddingLeft: 35 }]}
+              keyboardType="default"
+              value={userInfo.name}
+              placeholder="Test User"
+              onChangeText={(value) => {
+                setUserInfo({ ...userInfo, name: value });
+              }}
+            />
+            <Fontisto
+              style={{ position: "absolute", left: 26, top: 16.8 }}
+              name="person"
+              size={20}
+              color={"#A1A1A1"}
+            />
+          </View>
+          <View>
+            <TextInput
+              style={[styles.input, { paddingLeft: 35 }]}
+              keyboardType="email-address"
+              value={userInfo.email}
+              placeholder="can@gmail.com"
+              onChangeText={(value) => {
+                setUserInfo({ ...userInfo, email: value });
+              }}
+            />
+            <Fontisto
+              style={{ position: "absolute", left: 26, top: 16.8 }}
+              name="email"
+              size={20}
+              color={"#A1A1A1"}
+            />
+          </View>
           {required && (
             <View style={commonStyles.errorContainer}>
               <Entypo name="cross" size={18} color={"red"} />
@@ -185,7 +205,7 @@ export default function SignUpScreen() {
           <Text style={{ fontSize: 18, fontFamily: "Raleway_700Bold" }}>
             Already have an account?
           </Text>
-          <TouchableOpacity onPress={() => router.push("/(routes)/sign-up")}>
+          <TouchableOpacity onPress={() => router.push("/(routes)/login")}>
             <Text
               style={{
                 fontSize: 18,

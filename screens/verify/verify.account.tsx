@@ -1,5 +1,13 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useRef, useState } from "react";
+import Button from "@/components/button/button";
+import { router } from "expo-router";
 
 export default function VerifyAccountScreen() {
   const [code, setCode] = useState(new Array(4).fill(""));
@@ -16,13 +24,17 @@ export default function VerifyAccountScreen() {
     }
   };
 
+  const handleSubmit = () => {
+    const verificationCode = code.join("");
+    console.log(verificationCode);
+  };
   return (
     <View style={styles.contanier}>
       <Text style={styles.headerText}>Verification Code</Text>
       <Text style={styles.subText}>
-        Please enter the verification code sent to your email address
+        Please enter the verification code sent to your email address.
       </Text>
-      <View>
+      <View style={styles.inputContainer}>
         {code.map((_, index) => (
           <TextInput
             key={index}
@@ -32,11 +44,18 @@ export default function VerifyAccountScreen() {
             onChangeText={(text) => handleInput(text, index)}
             value={code[index]}
             ref={inputs.current[index]}
-            returnKeyType="done"
             autoFocus={index === 0 ? true : undefined}
           />
         ))}
       </View>
+      <View style={{ marginTop: 10 }}>
+        <Button title="Submit" onPress={handleSubmit} />
+      </View>
+      <TouchableOpacity onPress={() => router.back()}>
+        <Text style={{ fontSize: 20, paddingTop: 20, fontWeight: "500" }}>
+          Go back to sign in
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -68,8 +87,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     textAlign: "center",
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
     marginRight: 10,
+    borderRadius: 10,
+    fontSize: 20,
   },
 });
