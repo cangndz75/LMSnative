@@ -38,4 +38,20 @@ export const commonStyles = StyleSheet.create({
     textAlign: "center",
     color: "#575757",
   },
+  input: {
+    backgroundColor: "#fff",
+    paddingLeft: 35,
+    borderRadius: 8,
+    height: 55,
+    fontSize: 16,
+    marginHorizontal: 16,
+    color: "#A1A1A1",
+  },
+  errorContainer:{
+    flexDirection: "row",
+    marginHorizontal: 16,
+    top:60,
+    alignItems: "center",
+    position: "absolute",
+  },
 });
